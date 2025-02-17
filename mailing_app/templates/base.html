@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Business Mailing Solutions (BMS) </title>
+    <!-- Подключите статичеcкие файлы со стилями Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Business Mailing Solutions</h5>
+    <nav class="ms-5">
+        <a class="p-2 btn btn-outline-primary" href="{% url 'home' %}">Главная</a>
+        <a class="p-2 btn btn-outline-primary" href="/contacts/">Контакты</a>
+        <a class="p-2 btn btn-outline-primary" href="/add_mailing/">Создать рассылку</a>
+    </nav>
+</div>
+
+{% include 'includes/header.html' %}
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+    </div>
+
+{% include 'includes/footer.html' %}
+
+</body>
+</html

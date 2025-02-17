@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить товар{% endblock %}
+
+{% block content %}
+    <h1>Добавить нового получателя</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Добавить получателя</button>
+    </form>
+    <a href="/mailing_info/">Назад к форму рассылки</a>
+{% endblock %}
