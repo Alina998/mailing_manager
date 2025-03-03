@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+<h1 class="text-center">Список рассылок</h1>  <!-- Заголовок для главной страницы -->
+<div class="row text-center">
+    {% for mailing in mailings %}
+        <div class="col-md-4">
+            {% include 'includes/mailing_card.html' with mailing=mailing %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
