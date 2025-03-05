@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ letter.subject }}{% endblock %}
+
+{% block content %}
+    <h1>{{ letter.subject }}</h1>
+    <p><strong>Тема письма:</strong> {{ letter.subject }}</p>
+    <p><strong>Содержание письма:</strong> {{ letter.letter }} </p>
+    <p><strong>Автор:</strong> {{ letter.users.email }}</p>
+    <a class="btn btn-primary" href="{% url 'mailing_app.home' %}">На главную</a>
+{% if perms.mailing_app.add_letter_permission %}
+    <a class="btn btn-secondary" href="{% url 'mailing_app.add_letter' %}">Добавить письмо для рассылки</a>
+{% endif %}
+{% if perms.mailing_app.change_letter_permission %}
+    <a class="btn btn-warning" href="{% url 'mailing_app.update_letter' letter.pk %}">Редактировать письмо для рассылки</a>
+{% endif %}
+{% if perms.mailing_app.delete_letter_permission %}
+    <a class="btn btn-warning" href="{% url 'mailing_app:delete_letter' letter.pk %}">Удалить письмо для рассылки</a>
+{% endif %}
+{% endblock %}

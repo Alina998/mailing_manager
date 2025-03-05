@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+    <h1>{{ mailing.id }}</h1>
+    <p><strong>Статус рассылки:</strong> {{ mailing.status }}</p>
+    <p><strong>Сообщение рассылки:</strong> {{ mailing.letter.letter }} руб.</p>
+    <p><strong>Список получателей:</strong></p>
+<ul>
+    {% for recipient in mailing.recipient_list.all %}
+        <li>{{ recipient.name }} ({{ recipient.email }})</li>
+    {% endfor %}
+</ul>
+    <p><strong>Автор:</strong> {{ mailing.owner.email }}</p>
+    <p><strong>Дата создания:</strong> {{ mailing.created_at }}</p>
+    <p><strong>Дата изменения:</strong> {{ mailing.updated_at }}</p>
+    <a class="btn btn-primary" href="{% url 'mailing_app:home' %}">На главную</a>
+{% if mailing.owner == request.user %}
+    <a class="btn btn-warning" href="{% url 'mailing_app:update_mailing' mailing.pk %}">Редактировать рассылку</a>
+    <a class="btn btn-warning" href="{% url 'mailing_app:delete_mailing' mailing.pk %}">Удалить рассылку</a>
+{% endif %}
+{% endblock %}

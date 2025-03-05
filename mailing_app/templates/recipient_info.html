@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ recipient.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ recipient.name }}</h1>
+    <p><strong>Email:</strong> {{ recipient.email }}</p>
+    <p><strong>ФИО:</strong> {{ recipient.name }} руб.</p>
+    <p><strong>Комментарий:</strong> {{ recipient.comment }}</p>
+    <p><strong>Автор:</strong> {{ recipient.users.email }}</p>
+    <a class="btn btn-primary" href="{% url 'mailing_app.home' %}">На главную</a>
+  {% if perms.mailing_app.add_recipient_permission %}
+    <a class="btn btn-secondary" href="{% url 'mailing_app.add_recipient' %}">Добавить получателя</a>
+  {% endif %}
+  {% if perms.mailing_app.change_recipient_permission %}
+      <a class="btn btn-warning" href="{% url 'mailing_app.update_recipient' recipient.pk %}">Редактировать получателя</a>
+  {% endif %}
+  {% if perms.mailing_app.delete_recipient_permission %}
+      <a class="btn btn-warning" href="{% url 'mailing_app:delete_recipient' recipient.pk %}">Удалить получателя</a>
+  {% endif %}
+{% endblock %}

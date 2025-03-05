@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="my-0 font-weight-normal">{{ mailing.id }}</h4>
+    </div>
+    <div class="card-body">
+        <p><strong>Статус рассылки:</strong> {{ mailing.status }}</p>
+        <p><strong>Сообщение рассылки:</strong> {{ mailing.letter.subject }} </p>
+        <p><strong>Автор:</strong> {{ mailing.owner.email }}</p>
+        <p><strong>Дата создания:</strong> {{ mailing.created_at }}</p>
+        <p><strong>Дата изменения:</strong> {{ mailing.updated_at }}</p>
+        {% if perms.mailing_app.add_mailing_permission %}
+            <a class="btn btn-secondary" href="{% url 'mailing_app:add_mailing' %}">Добавить рассылку</a>
+        {% endif %}
+        {% if perms.mailing_app.change_mailing_permission %}
+            <a class="btn btn-warning" href="{% url 'mailing_app:update_mailing' mailing.pk %}">Редактировать рассылку</a>
+        {% endif %}
+        {% if perms.mailing_app.delete_mailing_permission %}
+            <a class="btn btn-warning" href="{% url 'mailing_app:delete_mailing' mailing.pk %}">Удалить рассылку</a>
+        {% endif %}
+        <a class="btn btn-lg btn-block btn-outline-primary" href="{% url 'mailing_app:mailing_info' mailing.pk %}">Посмотреть</a>
+    </div>
+</div>
+
