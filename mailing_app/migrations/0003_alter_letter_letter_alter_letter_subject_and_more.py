@@ -6,33 +6,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('mailing_app', '0002_letter_owner_mailing_owner_recipient_owner'),
+        ("mailing_app", "0002_letter_owner_mailing_owner_recipient_owner"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='letter',
-            name='letter',
-            field=models.CharField(max_length=10000, verbose_name='Содержание письма'),
+            model_name="letter",
+            name="letter",
+            field=models.CharField(max_length=10000, verbose_name="Содержание письма"),
         ),
         migrations.AlterField(
-            model_name='letter',
-            name='subject',
-            field=models.CharField(max_length=100, verbose_name='Тема письма'),
+            model_name="letter",
+            name="subject",
+            field=models.CharField(max_length=100, verbose_name="Тема письма"),
         ),
         migrations.AlterField(
-            model_name='recipient',
-            name='comment',
-            field=models.CharField(max_length=500, verbose_name='Комментарий'),
+            model_name="recipient",
+            name="comment",
+            field=models.CharField(max_length=500, verbose_name="Комментарий"),
         ),
         migrations.AlterField(
-            model_name='recipient',
-            name='email',
-            field=models.CharField(max_length=100, verbose_name='E-mail'),
+            model_name="recipient",
+            name="email",
+            field=models.CharField(max_length=100, verbose_name="E-mail"),
         ),
         migrations.AlterField(
-            model_name='recipient',
-            name='name',
-            field=models.CharField(max_length=100, verbose_name='ФИО'),
+            model_name="recipient",
+            name="name",
+            field=models.CharField(max_length=100, verbose_name="ФИО"),
         ),
     ]
