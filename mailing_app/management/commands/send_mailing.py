@@ -16,3 +16,4 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(f'Рассылка {mailing_id} успешно отправлена!'))
         except Exception as e:
             self.stdout.write(self.style.ERROR(f'Ошибка при отправке рассылки: {str(e)}'))
+            
